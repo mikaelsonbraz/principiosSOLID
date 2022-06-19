@@ -8,6 +8,10 @@ from SOLID.good_srp.utilities.reports.html_generator import HTMLGenerator
 from SOLID.good_srp.models.member import Member
 from SOLID.good_srp.models.manager import Manager
 
+from SOLID.good_srp.utilities.reports.writers.writer import Writer
+from SOLID.good_srp.utilities.reports.writers.html_writer import HTMLWriter
+from SOLID.good_srp.utilities.reports.writers.markdown_writer import MarkdownWriter
+
 if __name__ == '__main__':
     user = 'mikaelsonbraz'
     response = GitHubClient.get_repos_by_user(user)
@@ -16,15 +20,14 @@ if __name__ == '__main__':
         markdown_report = ReportsGenerator.build(MarkdownGenerator, repos)
         html_report = ReportsGenerator.build(HTMLGenerator, repos)
 
-        with open(r'C:\Users\mikae\PycharmProjects\principiosSolid\SOLID\good_srp\utilities\reports\markdown_reports\markdown_report.md',
-                  mode="w", encoding="UTF-8") as arquivo_md:
-            arquivo_md.write(markdown_report)
-        arquivo_md.close()
-
-        with open(r'C:\Users\mikae\PycharmProjects\principiosSolid\SOLID\good_srp\utilities\reports\html_reports\html_report.html',
-                  mode="w", encoding="UTF-8") as arquivo_html:
-            arquivo_html.write(html_report)
-        arquivo_html.close()
+        '''Dependency Inversion
+            Criei uma classe chamada Writer que tem um método que recebe dois parâmetros:
+            1 - Um writer que tenha o método save() - seja de html ou markdown
+            2 - O report específico seja pra html ou markdown
+            Obedecendo o Open/Closed Principle de novo as classes também estão abertas apenas para extensão
+        '''
+        Writer.write(MarkdownWriter, markdown_report)
+        Writer.write(HTMLWriter, html_report)
 
     else:
         print(response["body"])
