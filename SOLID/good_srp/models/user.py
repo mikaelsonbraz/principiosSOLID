@@ -1,9 +1,13 @@
 class User:
 
-    def __init__(self, uusername, email):
-        self._username = uusername
+    def __init__(self, username, email):
+        self._username = username
         self._email = email
 
-    @staticmethod
-    def members():
-        return ['username1', 'username2', 'username3']
+    @property
+    def getUsername(self):
+        return self._username
+
+    @property
+    def getEmail(self):
+        return self._email

@@ -1,4 +1,5 @@
 from SOLID.good_srp.client.GitHubClient import GitHubClient
+from SOLID.good_srp.models.owner import Owner
 from SOLID.good_srp.utilities.parser.parser import RepoParser
 from SOLID.good_srp.utilities.reports.reports_generator import ReportsGenerator
 from SOLID.good_srp.utilities.reports.markdown_generator import MarkdownGenerator
@@ -28,10 +29,16 @@ if __name__ == '__main__':
     else:
         print(response["body"])
 
+    """Aplicando o principio de Liskov Substitution agora as heranças e abstrações estão corrretas
+    Manager herda de User
+    Member e Owner herda de Developer que herda de User"""
+
     member = Member(user, "memberTest@test.com")
+    owner = Owner(user, "ownerTest@test.com")
     manager = Manager(user, "managerTest@test.com")
 
+    print(member.getUsername, owner.getUsername, manager.getUsername)
     print(member.members())
-    print(manager.members())
+    print(owner.members())
 
 
