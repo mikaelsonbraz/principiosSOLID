@@ -40,5 +40,8 @@ if __name__ == '__main__':
     print(member.getUsername, owner.getUsername, manager.getUsername)
     print(member.members())
     print(owner.members())
+    print("O member está trabalhando: " + member.work())
+    print("O owner está trabalhando: " + owner.work())
+    print("O manager está trabalhando: " + manager.work())
 
 

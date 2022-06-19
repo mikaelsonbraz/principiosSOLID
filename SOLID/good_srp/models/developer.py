@@ -9,3 +9,7 @@ class Developer(User):
     @staticmethod
     def members():
         return ['username1', 'username2', 'username3']
+
+    @staticmethod
+    def work():
+        return "Coding..."

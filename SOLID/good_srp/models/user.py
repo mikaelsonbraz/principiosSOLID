@@ -4,6 +4,10 @@ class User:
         self._username = username
         self._email = email
 
+    @staticmethod
+    def work():
+        raise NotImplementedError
+
     @property
     def getUsername(self):
         return self._username
