@@ -4,6 +4,9 @@ from SOLID.good_srp.utilities.reports.reports_generator import ReportsGenerator
 from SOLID.good_srp.utilities.reports.markdown_generator import MarkdownGenerator
 from SOLID.good_srp.utilities.reports.html_generator import HTMLGenerator
 
+from SOLID.good_srp.models.member import Member
+from SOLID.good_srp.models.manager import Manager
+
 if __name__ == '__main__':
     user = 'mikaelsonbraz'
     response = GitHubClient.get_repos_by_user(user)
@@ -24,5 +27,11 @@ if __name__ == '__main__':
 
     else:
         print(response["body"])
+
+    member = Member(user, "memberTest@test.com")
+    manager = Manager(user, "managerTest@test.com")
+
+    print(member.members())
+    print(manager.members())
 
 
