@@ -1,4 +1,4 @@
-class Repo():
+class Repo:
 
     def __init__(self, id, name, stars):
         self._id = id
@@ -18,5 +18,5 @@ class Repo():
         return self._stars
 
     def __str__(self):
-        return f'id: {self._id} name: {self._name} stars: {self._stars}'
+        return f'id: {self._id}, name: {self._name}, stars: {self._stars}'
     

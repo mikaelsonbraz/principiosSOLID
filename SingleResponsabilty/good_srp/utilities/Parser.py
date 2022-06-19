@@ -1,6 +1,7 @@
 from SingleResponsabilty.good_srp.models.repo import Repo
 
-class RepoParser():
+
+class RepoParser:
 
     @classmethod
     def parse(cls, response):
